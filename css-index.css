@@ -1,0 +1,148 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: KaiTi;
+    text-decoration: none;
+}
+
+body {
+    background-color: #FAF8EF;
+}
+
+h1{
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #776E65;
+}
+
+.grade {
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+    color: #776E65;
+}
+
+.text{
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 50px;
+    font-size: 18px;
+    font-family: "Microsoft YaHei";
+    text-align: left;
+    color: #56585d;
+}
+
+.all {
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    background-color: #BBADA0;
+    border-radius: 10px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: #ccc0b3;
+    float: left;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #776E65;
+    line-height: 100px;
+    text-align: center;
+}
+
+.n2 {
+    background-color: #eee3da;
+}
+
+.n4 {
+    background-color: #ede0c8;
+}
+
+.n8 {
+    background-color: #f2b179;
+}
+
+.n16 {
+    background-color: #f59563;
+}
+
+.n32 {
+    background-color: #f67c5f;
+}
+
+.n64 {
+    background-color: #f65e3b;
+}
+
+.n128 {
+    background-color: #edcf72;
+}
+
+.n256 {
+    background-color: #edcc61;
+}
+
+.n512 {
+    background-color: #9c0;
+}
+
+.n1024 {
+    background-color: #33b5e5;
+}
+
+.n2048 {
+    background-color: #09c;
+}
+
+.n4096 {
+    background-color: #a6c;
+}
+
+.n8192 {
+    background-color: #93c;
+}
+
+.gameover {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.gameover p {
+    width: 400px;
+    height: 300px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -200px;
+    border: solid 1px black;
+    border-radius: 10px;
+    font-size: 40px;
+    line-height: 100px;
+    text-align: center;
+}
+
+.gameover p a {
+    background-color: #8F7A66;
+    border-radius: 5px;
+    padding: 15px;
+    color: white;
+}
