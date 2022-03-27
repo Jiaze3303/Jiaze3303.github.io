@@ -1,0 +1,239 @@
+:root {
+  --primary-color: #31c27c;
+}
+body {
+  margin: 0px;
+}
+
+.title {
+  background-color: #fff;
+  margin: 0 auto;
+  width: 1440px;
+  height: 40px;
+  margin-top: 20px;
+}
+.top {
+  background-image: linear-gradient(180deg, #f3f3f3, #fff);
+}
+.page {
+  text-align: center;
+  width: 1440px;
+  margin: 0 auto;
+  font-family: poppin, Tahoma, Arial, \5FAE\8F6F\96C5\9ED1, sans-serif;
+}
+.middle {
+  background-image: linear-gradient(180deg, #f3f3f3, #fff);
+}
+.bottom {
+  background-image: linear-gradient(180deg, #f3f3f3, #fff);
+}
+.foot {
+  height: 300px;
+  background-color: #333333;
+}
+
+h1 {
+  font-weight: bold;
+  margin-top: 30px;
+  padding-top: 60px;
+  letter-spacing: 0.5em;
+}
+.top-list {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.tag-item {
+  display: inline-block;
+  padding: 0 8px;
+  margin-right: 24px;
+  line-height: 26px;
+  color: #000;
+  text-decoration: none;
+}
+.tag-active {
+  color: var(--primary-color);
+}
+.tag-item:not(.tag-active):hover {
+  color: var(--primary-color);
+}
+#but1 {
+  position: relative;
+  right: 44.8%;
+  bottom: 65px;
+  display: inline-block;
+  padding: 5px 20px;
+  font-size: 18px;
+  border-color: #c9c9c9;
+}
+.grid {
+  display: grid;
+  justify-content: center;
+  grid-gap: 20px;
+  grid-template-columns: 19% 19% 19% 19% 19%;
+}
+.grid2 {
+  display: grid;
+  justify-content: center;
+  grid-gap: 20px;
+  grid-template-columns: 32% 32% 32%;
+}
+.grid-item {
+  width: 100%;
+  height: 300px;
+  border: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.grid-item2 {
+  width: 100%;
+  height: 120px;
+  border: 15px;
+  display: flex;
+  margin-bottom: 10px;
+}
+.grid-item3 {
+  width: 100%;
+  height: 200px;
+  border: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+.sing {
+  width: 280px;
+  height: 280px;
+  max-width: 300px;
+  min-width: 100px;
+  max-height: 300px;
+  min-height: 100px;
+}
+.sing2 {
+  width: 120px;
+  height: 120px;
+}
+.sing3 {
+  width: 280px;
+  height: 155px;
+}
+.flex-item {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  max-width: 300px;
+  font-size: 18px;
+}
+.flex-item2 {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  max-width: 300px;
+  text-indent: 1em;
+  font-size: 18px;
+}
+.flex-item3 {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  max-width: 300px;
+  font-size: 18px;
+}
+.sec {
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.sec2 {
+  font-weight: lighter;
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #999999;
+}
+.sec3 {
+  display: flex;
+  font-weight: lighter;
+  color: #999999;
+}
+.sec:hover {
+  color: var(--primary-color);
+}
+.sec2:hover {
+  color: var(--primary-color);
+}
+.num {
+  text-indent: 0.5em;
+}
+.flex-fixed {
+  width: 250px;
+  flex: inherit;
+}
+.flex-auto {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  font-weight: lighter;
+  font-size: 20px;
+  color: #999999;
+}
+.cover-wrap {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.sing {
+  width: 100%;
+  transition: all 0.75s;
+}
+.sing2 {
+  width: 100%;
+  transition: all 0.75s;
+}
+.sing3 {
+  width: 100%;
+  transition: all 0.75s;
+}
+.cover-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.cover-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -35px;
+  margin-top: -35px;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all 0.5s;
+}
+.cover-wrap:hover .cover-mask {
+  opacity: 0.2;
+}
+.cover-wrap:hover .cover-play {
+  opacity: 1;
+  transform: scale(1);
+}
+.cover-wrap:hover .sing {
+  transform: scale(1.07);
+}
+.cover-wrap:hover .sing2 {
+  transform: scale(1.07);
+}
+.cover-wrap:hover .sing3 {
+  transform: scale(1.07);
+}
