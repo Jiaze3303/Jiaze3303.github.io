@@ -719,10 +719,29 @@ body:hover .cursor-glow { opacity: 1; }
 .lightbox-backdrop {
     position: absolute;
     inset: 0;
-    background: var(--overlay);
-    backdrop-filter: blur(30px) saturate(0.8);
-    -webkit-backdrop-filter: blur(30px) saturate(0.8);
+    background-color: var(--bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     animation: fadeIn 0.25s ease;
+}
+
+.lightbox-backdrop::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    background-size: cover;
+    background-position: center;
+    filter: blur(60px) saturate(0.5);
+    transform: scale(1.2);
+}
+
+.lightbox-backdrop::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
 }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

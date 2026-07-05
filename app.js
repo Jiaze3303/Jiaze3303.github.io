@@ -264,8 +264,12 @@
 
         const img = document.getElementById("lightboxImg");
         const loader = document.querySelector(".lightbox-loader");
+        const backdrop = document.querySelector(".lightbox-backdrop");
         img.classList.remove("visible");
         loader.classList.add("active");
+
+        // Set blurred background
+        backdrop.style.backgroundImage = `url(${photo.src})`;
 
         img.src = photo.src;
         img.onload = () => {
@@ -305,8 +309,16 @@
         // Lightbox controls
         document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
         document.querySelector(".lightbox-backdrop").addEventListener("click", closeLightbox);
-        document.getElementById("lbPrev").addEventListener("click", () => navigateLightbox(-1));
-        document.getElementById("lbNext").addEventListener("click", () => navigateLightbox(1));
+
+        // Click on image-wrap area (not image itself) closes lightbox
+        document.querySelector(".lightbox-image-wrap").addEventListener("click", (e) => {
+            if (e.target === e.currentTarget || e.target === document.getElementById("lightboxCaption")) {
+                closeLightbox();
+            }
+        });
+
+        document.getElementById("lbPrev").addEventListener("click", (e) => { e.stopPropagation(); navigateLightbox(-1); });
+        document.getElementById("lbNext").addEventListener("click", (e) => { e.stopPropagation(); navigateLightbox(1); });
 
         // Keyboard
         document.addEventListener("keydown", (e) => {
