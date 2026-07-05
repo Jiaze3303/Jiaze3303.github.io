@@ -86,9 +86,9 @@
 
         function onScroll() {
             const scrollY = window.scrollY;
-            if (scrollY > heroHeight - 100) {
+            if (scrollY > heroHeight * 0.5) {
                 header.classList.add("visible");
-            } else {
+            } else if (scrollY < 50) {
                 header.classList.remove("visible");
             }
 
@@ -199,7 +199,8 @@
                     if (album === "all" || photo.album === album) {
                         card.style.display = "";
                         card.classList.remove("revealed");
-                        requestAnimationFrame(() => card.classList.add("revealed"));
+                        void card.offsetWidth; // force reflow
+                        card.classList.add("revealed");
                     } else {
                         card.style.display = "none";
                     }
