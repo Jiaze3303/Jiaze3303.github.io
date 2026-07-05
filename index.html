@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
-    <meta name="description" content="A minimal photography gallery">
+    <title>摄影集</title>
+    <meta name="description" content="极简摄影展示网站">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,8 +16,8 @@
     <header class="header">
         <div class="header-inner">
             <div class="header-left">
-                <h1 class="site-title">Gallery</h1>
-                <span class="photo-count">{{PHOTO_COUNT}} photos</span>
+                <h1 class="site-title">摄影集</h1>
+                <span class="photo-count">{{PHOTO_COUNT}} 张照片</span>
             </div>
             <nav class="header-right">
                 <div class="album-nav">{{ALBUMS}}</div>
@@ -75,11 +75,11 @@
                 <div class="sidebar-exif">
                     <div class="exif-grid">
                         <div class="exif-item" id="lbAperture">
-                            <span class="exif-label">Aperture</span>
+                            <span class="exif-label">光圈</span>
                             <span class="exif-value"></span>
                         </div>
                         <div class="exif-item" id="lbShutter">
-                            <span class="exif-label">Shutter</span>
+                            <span class="exif-label">快门</span>
                             <span class="exif-value"></span>
                         </div>
                         <div class="exif-item" id="lbISO">
@@ -87,7 +87,7 @@
                             <span class="exif-value"></span>
                         </div>
                         <div class="exif-item" id="lbFocal">
-                            <span class="exif-label">Focal</span>
+                            <span class="exif-label">焦距</span>
                             <span class="exif-value"></span>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <span>Built {{BUILD_TIME}}</span>
+        <span>构建于 {{BUILD_TIME}}</span>
     </footer>
 
     <script>

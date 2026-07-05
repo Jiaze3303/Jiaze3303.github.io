@@ -202,7 +202,7 @@ def generate_html(base_dir: str, photos: list, output_dir: str):
 
     # Build albums list
     albums = sorted(set(p["album"] for p in photos if p.get("album")))
-    albums_html = '<button class="album-btn active" data-album="all">All</button>\n'
+    albums_html = '<button class="album-btn active" data-album="all">全部</button>\n'
     for album in albums:
         albums_html += f'        <button class="album-btn" data-album="{album}">{album}</button>\n'
 

@@ -39,7 +39,7 @@
                             img.onload = () => img.classList.add("loaded");
                             img.onerror = () => {
                                 img.src =
-                                    'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" fill="%231a1a1a"><rect width="400" height="300"/><text x="50%" y="50%" fill="%23555" text-anchor="middle" dy=".3em" font-size="14">Error</text></svg>';
+                                    'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" fill="%231a1a1a"><rect width="400" height="300"/><text x="50%" y="50%" fill="%23555" text-anchor="middle" dy=".3em" font-size="14">加载失败</text></svg>';
                                 img.classList.add("loaded");
                             };
                             observer.unobserve(img);
