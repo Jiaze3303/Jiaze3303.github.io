@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>摄影集</title>
-    <meta name="description" content="极简摄影展示网站">
+    <title>JIAZE — Photography</title>
+    <meta name="description" content="Jiaze Photography Portfolio">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Grain Overlay -->
@@ -22,39 +22,42 @@
     <section class="hero" id="hero">
         <div class="hero-bg" id="heroBg"></div>
         <div class="hero-content">
+            <div class="hero-top-line">
+                <span class="hero-line-left"></span>
+                <span class="hero-year">EST. 2024</span>
+                <span class="hero-line-right"></span>
+            </div>
             <div class="hero-badge">
                 <span class="badge-dot"></span>
-                <span>正在展出</span>
+                <span>ON DISPLAY</span>
             </div>
             <h1 class="hero-title">
-                <span class="title-line" data-delay="0">摄</span>
-                <span class="title-line" data-delay="1">影</span>
-                <span class="title-line" data-delay="2">集</span>
+                <span class="title-j">JIAZE</span>
             </h1>
-            <p class="hero-subtitle">用光影记录世界的每一个瞬间</p>
+            <p class="hero-subtitle">P H O T O G R A P H Y</p>
+            <div class="hero-divider">
+                <span class="divider-dot"></span>
+            </div>
+            <div class="hero-quote">"用光影记录世界的每一个瞬间"</div>
             <div class="hero-stats">
                 <div class="stat-item">
                     <span class="stat-number" id="statPhotos">0</span>
-                    <span class="stat-label">张照片</span>
+                    <span class="stat-label">PHOTOS</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
                     <span class="stat-number" id="statAlbums">0</span>
-                    <span class="stat-label">个相册</span>
+                    <span class="stat-label">ALBUMS</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
                     <span class="stat-number" id="statCameras">0</span>
-                    <span class="stat-label">台相机</span>
+                    <span class="stat-label">CAMERAS</span>
                 </div>
             </div>
             <div class="hero-scroll" id="heroScroll">
-                <span>向下浏览</span>
-                <div class="scroll-arrow">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"/>
-                    </svg>
-                </div>
+                <span>SCROLL</span>
+                <div class="scroll-line"></div>
             </div>
         </div>
     </section>
@@ -64,15 +67,15 @@
         <div class="header-inner">
             <div class="header-left">
                 <a href="#" class="site-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
-                    <span class="logo-icon">◈</span>
-                    <span class="logo-text">摄影集</span>
+                    <span class="logo-dot"></span>
+                    <span class="logo-text">JIAZE</span>
                 </a>
             </div>
             <nav class="header-center">
                 <div class="album-nav" id="albumNav">{{ALBUMS}}</div>
             </nav>
             <div class="header-right">
-                <span class="photo-count-header" id="photoCountHeader">{{PHOTO_COUNT}} 张照片</span>
+                <span class="photo-count-header" id="photoCountHeader">{{PHOTO_COUNT}} 张</span>
                 <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
                     <div class="toggle-track">
                         <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -91,7 +94,7 @@
     <section class="gallery-section" id="gallerySection">
         <div class="section-header">
             <h2 class="section-title">
-                <span class="title-accent">◈</span>
+                <span class="title-red-dot"></span>
                 全部作品
             </h2>
             <div class="view-toggle">
@@ -223,13 +226,14 @@
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-brand">
-                <span class="footer-logo">◈ 摄影集</span>
-                <span class="footer-tagline">光影之间</span>
+                <span class="footer-dot"></span>
+                <span class="footer-logo">JIAZE</span>
+                <span class="footer-tagline">PHOTOGRAPHY</span>
             </div>
             <div class="footer-meta">
                 <span>构建于 {{BUILD_TIME}}</span>
                 <span class="footer-sep">·</span>
-                <span>静态生成</span>
+                <span>STATIC GALLERY</span>
             </div>
         </div>
     </footer>
