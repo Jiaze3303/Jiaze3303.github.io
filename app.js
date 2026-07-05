@@ -1,6 +1,6 @@
 /**
- * Gallery — Client-side gallery logic
- * Lazy loading, lightbox, theme switching, album filtering
+ * 摄影集 — Enhanced Gallery Logic
+ * Scroll reveal, cursor glow, lightbox, theme, lazy load, stats counter
  */
 
 (function () {
@@ -10,13 +10,13 @@
     let currentIndex = 0;
     let filteredPhotos = [...photos];
     let currentAlbum = "all";
+    let currentView = "masonry";
 
     // ── Theme ──
     function initTheme() {
         const saved = localStorage.getItem("theme");
         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const theme = saved || (prefersDark ? "dark" : "dark"); // default dark
-        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.setAttribute("data-theme", saved || (prefersDark ? "dark" : "dark"));
     }
 
     function toggleTheme() {
@@ -26,9 +26,129 @@
         localStorage.setItem("theme", next);
     }
 
+    // ── Cursor Glow ──
+    function initCursorGlow() {
+        const glow = document.getElementById("cursorGlow");
+        if (!glow || window.matchMedia("(max-width: 768px)").matches) return;
+
+        let mx = 0, my = 0, gx = 0, gy = 0;
+        document.addEventListener("mousemove", (e) => {
+            mx = e.clientX;
+            my = e.clientY;
+        });
+
+        function animate() {
+            gx += (mx - gx) * 0.08;
+            gy += (my - gy) * 0.08;
+            glow.style.transform = `translate(${gx - 200}px, ${gy - 200}px)`;
+            requestAnimationFrame(animate);
+        }
+        animate();
+    }
+
+    // ── Hero Stats Counter ──
+    function animateCounter(el, target) {
+        const duration = 1200;
+        const start = performance.now();
+        const from = 0;
+
+        function tick(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3); // ease out cubic
+            el.textContent = Math.round(from + (target - from) * eased);
+            if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+    }
+
+    function initStats() {
+        const cameras = new Set(photos.filter(p => p.camera).map(p => p.camera));
+        const albums = new Set(photos.filter(p => p.album).map(p => p.album));
+
+        setTimeout(() => {
+            animateCounter(document.getElementById("statPhotos"), photos.length);
+            animateCounter(document.getElementById("statAlbums"), albums.size);
+            animateCounter(document.getElementById("statCameras"), cameras.size);
+        }, 1400);
+    }
+
+    // ── Header Scroll ──
+    function initHeader() {
+        const header = document.getElementById("header");
+        const hero = document.getElementById("hero");
+        const backToTop = document.getElementById("backToTop");
+        let heroHeight = hero ? hero.offsetHeight : 0;
+
+        function onScroll() {
+            const scrollY = window.scrollY;
+            if (scrollY > heroHeight - 100) {
+                header.classList.add("visible");
+            } else {
+                header.classList.remove("visible");
+            }
+
+            if (backToTop) {
+                if (scrollY > 600) {
+                    backToTop.classList.add("visible");
+                } else {
+                    backToTop.classList.remove("visible");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+
+        if (backToTop) {
+            backToTop.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        }
+
+        // Hero scroll button
+        const heroScroll = document.getElementById("heroScroll");
+        if (heroScroll) {
+            heroScroll.addEventListener("click", () => {
+                const gallerySection = document.getElementById("gallerySection");
+                if (gallerySection) {
+                    gallerySection.scrollIntoView({ behavior: "smooth" });
+                }
+            });
+        }
+
+        // Recalculate on resize
+        window.addEventListener("resize", () => {
+            heroHeight = hero ? hero.offsetHeight : 0;
+        });
+    }
+
+    // ── Scroll Reveal ──
+    function initScrollReveal() {
+        const cards = document.querySelectorAll(".photo-card");
+
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("revealed");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { rootMargin: "50px 0px", threshold: 0.05 }
+            );
+            cards.forEach((card) => observer.observe(card));
+        } else {
+            cards.forEach((card) => card.classList.add("revealed"));
+        }
+    }
+
     // ── Lazy Loading ──
     function initLazyLoad() {
         const images = document.querySelectorAll(".photo-img[data-src]");
+
         if ("IntersectionObserver" in window) {
             const observer = new IntersectionObserver(
                 (entries) => {
@@ -38,19 +158,17 @@
                             img.src = img.dataset.src;
                             img.onload = () => img.classList.add("loaded");
                             img.onerror = () => {
-                                img.src =
-                                    'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" fill="%231a1a1a"><rect width="400" height="300"/><text x="50%" y="50%" fill="%23555" text-anchor="middle" dy=".3em" font-size="14">加载失败</text></svg>';
+                                img.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" fill="#1a1a1a"><rect width="400" height="300"/><text x="50%" y="50%" fill="#555" text-anchor="middle" dy=".3em" font-size="14">加载失败</text></svg>')}`;
                                 img.classList.add("loaded");
                             };
                             observer.unobserve(img);
                         }
                     });
                 },
-                { rootMargin: "200px" }
+                { rootMargin: "300px" }
             );
             images.forEach((img) => observer.observe(img));
         } else {
-            // Fallback
             images.forEach((img) => {
                 img.src = img.dataset.src;
                 img.onload = () => img.classList.add("loaded");
@@ -76,10 +194,33 @@
                     const photo = photos[i];
                     if (album === "all" || photo.album === album) {
                         card.style.display = "";
+                        card.classList.remove("revealed");
+                        requestAnimationFrame(() => card.classList.add("revealed"));
                     } else {
                         card.style.display = "none";
                     }
                 });
+            });
+        });
+    }
+
+    // ── View Toggle ──
+    function initViewToggle() {
+        const buttons = document.querySelectorAll(".view-btn");
+        const gallery = document.getElementById("gallery");
+
+        buttons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const view = btn.dataset.view;
+                currentView = view;
+                buttons.forEach((b) => b.classList.remove("active"));
+                btn.classList.add("active");
+
+                if (view === "grid") {
+                    gallery.classList.add("grid-view");
+                } else {
+                    gallery.classList.remove("grid-view");
+                }
             });
         });
     }
@@ -106,22 +247,42 @@
         if (!photo) return;
 
         const img = document.getElementById("lightboxImg");
+        const loader = document.querySelector(".lightbox-loader");
         img.classList.remove("visible");
-        img.src = photo.src;
-        img.onload = () => img.classList.add("visible");
+        loader.classList.add("active");
 
-        // Sidebar info
+        img.src = photo.src;
+        img.onload = () => {
+            loader.classList.remove("active");
+            img.classList.add("visible");
+        };
+
+        // Caption
+        const caption = document.getElementById("lightboxCaption");
+        caption.textContent = photo.filename;
+
+        // Sidebar
         setText("lbFilename", photo.filename);
         setMeta("lbDate", photo.date);
         setMeta("lbAlbum", photo.album);
         setMeta("lbCamera", photo.camera);
         setMeta("lbLens", photo.lens);
-        setExif("lbAperture", photo.aperture);
-        setExif("lbShutter", photo.shutter);
-        setExif("lbISO", photo.iso);
-        setExif("lbFocal", photo.focal);
+        setExifCard("lbAperture", photo.aperture);
+        setExifCard("lbShutter", photo.shutter);
+        setExifCard("lbISO", photo.iso);
+        setExifCard("lbFocal", photo.focal);
 
-        document.getElementById("lbCounter").textContent = `${currentIndex + 1} / ${filteredPhotos.length}`;
+        // File info
+        const sizeEl = document.getElementById("lbSize");
+        if (sizeEl && photo.width && photo.height) {
+            sizeEl.textContent = `${photo.width} × ${photo.height}`;
+        }
+
+        // Progress bar
+        const progress = document.getElementById("lbProgress");
+        if (progress) {
+            progress.style.width = `${((currentIndex + 1) / filteredPhotos.length) * 100}%`;
+        }
     }
 
     function setText(id, value) {
@@ -134,18 +295,18 @@
         if (!el) return;
         if (value) {
             el.classList.remove("hidden");
-            el.querySelector(".meta-value").textContent = value;
+            el.querySelector(".info-value").textContent = value;
         } else {
             el.classList.add("hidden");
         }
     }
 
-    function setExif(id, value) {
+    function setExifCard(id, value) {
         const el = document.getElementById(id);
         if (!el) return;
         if (value) {
             el.classList.remove("hidden");
-            el.querySelector(".exif-value").textContent = value;
+            el.querySelector(".exif-card-value").textContent = value;
         } else {
             el.classList.add("hidden");
         }
@@ -156,17 +317,16 @@
         updateLightbox();
     }
 
-    // ── Event Listeners ──
+    // ── Events ──
     function initEvents() {
-        // Theme toggle
+        // Theme
         document.getElementById("themeToggle").addEventListener("click", toggleTheme);
 
-        // Gallery click → lightbox
+        // Gallery click
         document.getElementById("gallery").addEventListener("click", (e) => {
             const card = e.target.closest(".photo-card");
             if (!card) return;
             const index = parseInt(card.dataset.index, 10);
-            // Find index in filteredPhotos
             const photo = photos[index];
             const filteredIndex = filteredPhotos.indexOf(photo);
             openLightbox(filteredIndex >= 0 ? filteredIndex : 0);
@@ -184,15 +344,9 @@
             if (!lightbox.classList.contains("active")) return;
 
             switch (e.key) {
-                case "Escape":
-                    closeLightbox();
-                    break;
-                case "ArrowLeft":
-                    navigateLightbox(-1);
-                    break;
-                case "ArrowRight":
-                    navigateLightbox(1);
-                    break;
+                case "Escape": closeLightbox(); break;
+                case "ArrowLeft": navigateLightbox(-1); break;
+                case "ArrowRight": navigateLightbox(1); break;
             }
         });
 
@@ -201,20 +355,23 @@
         const lightbox = document.getElementById("lightbox");
         lightbox.addEventListener("touchstart", (e) => {
             touchStartX = e.touches[0].clientX;
-        });
+        }, { passive: true });
         lightbox.addEventListener("touchend", (e) => {
             const diff = touchStartX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 50) {
-                navigateLightbox(diff > 0 ? 1 : -1);
-            }
+            if (Math.abs(diff) > 50) navigateLightbox(diff > 0 ? 1 : -1);
         });
     }
 
     // ── Init ──
     function init() {
         initTheme();
+        initCursorGlow();
+        initHeader();
+        initStats();
+        initScrollReveal();
         initLazyLoad();
         initAlbumFilter();
+        initViewToggle();
         initEvents();
     }
 

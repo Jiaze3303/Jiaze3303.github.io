@@ -190,11 +190,15 @@ def generate_html(base_dir: str, photos: list, output_dir: str):
         <div class="photo-card" data-index="{i}" data-aspect="{aspect}">
             <img data-src="{photo['src']}" alt="{photo['filename']}" loading="lazy" class="photo-img">
             <div class="photo-overlay">
-                <div class="photo-meta">
+                <div class="photo-top-bar">
                     {album_label}
-                    <span class="photo-date">{date_str}</span>
                 </div>
-                <div class="photo-exif">{exif_text}</div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">{date_str}</span>
+                    </div>
+                    <div class="photo-exif">{exif_text}</div>
+                </div>
             </div>
         </div>''')
 
