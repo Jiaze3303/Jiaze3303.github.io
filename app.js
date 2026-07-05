@@ -277,55 +277,9 @@
         const caption = document.getElementById("lightboxCaption");
         caption.textContent = photo.filename;
 
-        // Sidebar
-        setText("lbFilename", photo.filename);
-        setMeta("lbDate", photo.date);
-        setMeta("lbAlbum", photo.album);
-        setMeta("lbCamera", photo.camera);
-        setMeta("lbLens", photo.lens);
-        setExifCard("lbAperture", photo.aperture);
-        setExifCard("lbShutter", photo.shutter);
-        setExifCard("lbISO", photo.iso);
-        setExifCard("lbFocal", photo.focal);
-
-        // File info
-        const sizeEl = document.getElementById("lbSize");
-        if (sizeEl && photo.width && photo.height) {
-            sizeEl.textContent = `${photo.width} × ${photo.height}`;
-        }
-
-        // Progress bar
-        const progress = document.getElementById("lbProgress");
-        if (progress) {
-            progress.style.width = `${((currentIndex + 1) / filteredPhotos.length) * 100}%`;
-        }
-    }
-
-    function setText(id, value) {
-        const el = document.getElementById(id);
-        if (el) el.textContent = value || "";
-    }
-
-    function setMeta(id, value) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        if (value) {
-            el.classList.remove("hidden");
-            el.querySelector(".info-value").textContent = value;
-        } else {
-            el.classList.add("hidden");
-        }
-    }
-
-    function setExifCard(id, value) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        if (value) {
-            el.classList.remove("hidden");
-            el.querySelector(".exif-card-value").textContent = value;
-        } else {
-            el.classList.add("hidden");
-        }
+        // Counter
+        const counter = document.getElementById("lbCounter");
+        if (counter) counter.textContent = `${currentIndex + 1} / ${filteredPhotos.length}`;
     }
 
     function navigateLightbox(direction) {

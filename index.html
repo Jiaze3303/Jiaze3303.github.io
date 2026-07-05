@@ -127,91 +127,27 @@
                 <img class="lightbox-img" id="lightboxImg" src="" alt="">
                 <div class="lightbox-caption" id="lightboxCaption"></div>
             </div>
-            <aside class="lightbox-sidebar" id="lightboxSidebar">
-                <div class="sidebar-header">
-                    <div class="sidebar-filename" id="lbFilename"></div>
-                    <button class="lightbox-close" id="lightboxClose" aria-label="关闭">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-                        </svg>
-                    </button>
-                </div>
+            <!-- Lightbox Top Bar -->
+            <div class="lightbox-topbar">
+                <div class="lightbox-counter" id="lbCounter"></div>
+                <button class="lightbox-close" id="lightboxClose" aria-label="关闭">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
 
-                <div class="sidebar-section">
-                    <div class="section-label">拍摄信息</div>
-                    <div class="info-grid">
-                        <div class="info-row" id="lbDate">
-                            <span class="info-icon">📅</span>
-                            <span class="info-label">日期</span>
-                            <span class="info-value"></span>
-                        </div>
-                        <div class="info-row" id="lbAlbum">
-                            <span class="info-icon">📁</span>
-                            <span class="info-label">相册</span>
-                            <span class="info-value"></span>
-                        </div>
-                        <div class="info-row" id="lbCamera">
-                            <span class="info-icon">📷</span>
-                            <span class="info-label">机身</span>
-                            <span class="info-value"></span>
-                        </div>
-                        <div class="info-row" id="lbLens">
-                            <span class="info-icon">🔭</span>
-                            <span class="info-label">镜头</span>
-                            <span class="info-value"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sidebar-section">
-                    <div class="section-label">拍摄参数</div>
-                    <div class="exif-cards">
-                        <div class="exif-card" id="lbAperture">
-                            <div class="exif-card-icon">◎</div>
-                            <div class="exif-card-label">光圈</div>
-                            <div class="exif-card-value"></div>
-                        </div>
-                        <div class="exif-card" id="lbShutter">
-                            <div class="exif-card-icon">⏱</div>
-                            <div class="exif-card-label">快门</div>
-                            <div class="exif-card-value"></div>
-                        </div>
-                        <div class="exif-card" id="lbISO">
-                            <div class="exif-card-icon">☀</div>
-                            <div class="exif-card-label">感光度</div>
-                            <div class="exif-card-value"></div>
-                        </div>
-                        <div class="exif-card" id="lbFocal">
-                            <div class="exif-card-icon">⊕</div>
-                            <div class="exif-card-label">焦距</div>
-                            <div class="exif-card-value"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sidebar-section" id="lbDimensions">
-                    <div class="section-label">文件信息</div>
-                    <div class="file-info">
-                        <span class="file-info-item" id="lbSize"></span>
-                    </div>
-                </div>
-
-                <div class="sidebar-nav">
-                    <button class="nav-btn" id="lbPrev" aria-label="上一张">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="15 18 9 12 15 6"/>
-                        </svg>
-                    </button>
-                    <div class="nav-progress">
-                        <div class="progress-bar" id="lbProgress"></div>
-                    </div>
-                    <button class="nav-btn" id="lbNext" aria-label="下一张">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 18 15 12 9 6"/>
-                        </svg>
-                    </button>
-                </div>
-            </aside>
+            <!-- Lightbox Nav -->
+            <button class="lightbox-nav lightbox-nav-prev" id="lbPrev" aria-label="上一张">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </button>
+            <button class="lightbox-nav lightbox-nav-next" id="lbNext" aria-label="下一张">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
         </div>
     </div>
 
