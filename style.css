@@ -732,6 +732,9 @@ body:hover .cursor-glow { opacity: 1; }
     z-index: 1;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     animation: lightboxIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -741,13 +744,14 @@ body:hover .cursor-glow { opacity: 1; }
 }
 
 .lightbox-image-wrap {
-    flex: 1;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 0;
-    padding: 20px;
+    padding: 56px 60px;
     position: relative;
+    box-sizing: border-box;
 }
 
 .lightbox-loader { position: absolute; display: none; }
@@ -767,6 +771,8 @@ body:hover .cursor-glow { opacity: 1; }
 .lightbox-img {
     max-width: 100%;
     max-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: contain;
     border-radius: var(--radius);
     box-shadow: var(--shadow-lg);
@@ -960,9 +966,10 @@ body:hover .cursor-glow { opacity: 1; }
     .stat-number { font-size: 1.4rem; }
     .hero-top-line { display: none; }
 
+    .lightbox-image-wrap { padding: 48px 12px; }
     .lightbox-nav { padding: 10px; }
-    .lightbox-nav-prev { left: 8px; }
-    .lightbox-nav-next { right: 8px; }
+    .lightbox-nav-prev { left: 4px; }
+    .lightbox-nav-next { right: 4px; }
 
     .header-inner { padding: 0 16px; }
     .album-nav { max-width: 45vw; }
