@@ -230,6 +230,29 @@
     }
 
     // ── Lightbox ──
+    // Image cache for preloading
+    const imageCache = new Map();
+
+    function preloadImage(src) {
+        if (imageCache.has(src)) return imageCache.get(src);
+        const img = new Image();
+        img.src = src;
+        const promise = new Promise((resolve) => {
+            img.onload = () => resolve(img);
+            img.onerror = () => resolve(img);
+            if (img.complete) resolve(img);
+        });
+        imageCache.set(src, promise);
+        return promise;
+    }
+
+    function preloadAdjacent() {
+        const prev = (currentIndex - 1 + filteredPhotos.length) % filteredPhotos.length;
+        const next = (currentIndex + 1) % filteredPhotos.length;
+        if (filteredPhotos[prev]) preloadImage(filteredPhotos[prev].src);
+        if (filteredPhotos[next]) preloadImage(filteredPhotos[next].src);
+    }
+
     function openLightbox(index) {
         const lightbox = document.getElementById("lightbox");
         currentIndex = index;
@@ -253,25 +276,36 @@
         const img = document.getElementById("lightboxImg");
         const loader = document.querySelector(".lightbox-loader");
         const backdrop = document.querySelector(".lightbox-backdrop");
-        img.classList.remove("visible");
+
+        // Instant hide
+        img.style.opacity = "0";
         loader.classList.add("active");
 
-        // Set blurred background
-        backdrop.style.backgroundImage = `url(${photo.src})`;
+        // Set blurred background (use cached version if available)
+        const cached = imageCache.get(photo.src);
+        if (cached && cached.then) {
+            cached.then(() => {
+                backdrop.style.backgroundImage = `url(${photo.src})`;
+            });
+        } else {
+            backdrop.style.backgroundImage = `url(${photo.src})`;
+        }
 
-        img.src = photo.src;
-        img.onload = () => {
+        // Load and show image
+        preloadImage(photo.src).then(() => {
+            img.src = photo.src;
             loader.classList.remove("active");
-            img.classList.add("visible");
-        };
+            img.style.opacity = "1";
+        });
 
-        // Caption
+        // Caption & counter
         const caption = document.getElementById("lightboxCaption");
-        caption.textContent = photo.filename;
-
-        // Counter
+        if (caption) caption.textContent = photo.filename;
         const counter = document.getElementById("lbCounter");
         if (counter) counter.textContent = `${currentIndex + 1} / ${filteredPhotos.length}`;
+
+        // Preload adjacent images
+        preloadAdjacent();
     }
 
     function navigateLightbox(direction) {
@@ -330,9 +364,17 @@
     }
 
     // ── Init ──
+    function preloadGalleryImages() {
+        // Preload all gallery images in background for instant lightbox
+        photos.forEach((photo, i) => {
+            if (i < 20) preloadImage(photo.src); // Preload first 20
+        });
+    }
+
     function init() {
         initHeroBg();
         initCursorGlow();
+        preloadGalleryImages();
         initHeader();
         initStats();
         initScrollReveal();
