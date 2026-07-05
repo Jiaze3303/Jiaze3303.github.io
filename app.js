@@ -28,19 +28,7 @@
         img.src = randomPhoto.src;
     }
 
-    // ── Theme ──
-    function initTheme() {
-        const saved = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        document.documentElement.setAttribute("data-theme", saved || (prefersDark ? "dark" : "dark"));
-    }
 
-    function toggleTheme() {
-        const current = document.documentElement.getAttribute("data-theme");
-        const next = current === "dark" ? "light" : "dark";
-        document.documentElement.setAttribute("data-theme", next);
-        localStorage.setItem("theme", next);
-    }
 
     // ── Cursor Glow ──
     function initCursorGlow() {
@@ -293,9 +281,6 @@
 
     // ── Events ──
     function initEvents() {
-        // Theme
-        document.getElementById("themeToggle").addEventListener("click", toggleTheme);
-
         // Gallery click
         document.getElementById("gallery").addEventListener("click", (e) => {
             const card = e.target.closest(".photo-card");
@@ -346,7 +331,6 @@
 
     // ── Init ──
     function init() {
-        initTheme();
         initHeroBg();
         initCursorGlow();
         initHeader();
