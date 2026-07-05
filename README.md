@@ -1,88 +1,95 @@
-# 📷 Photo Gallery
+# 📷 JIAZE Photography
 
-极简风格的静态摄影展示网站，灵感来自 ChronoFrame。往 GitHub 丢照片，网站自动构建部署。
+徕卡风格极简摄影展示网站。上传照片到 GitHub，自动构建部署。
 
-## ✨ 特性
+**🔗 在线访问：https://jiaze3303.github.io**
 
-- **零配置** — 把照片放进 `images/` 文件夹，push 即可
-- **EXIF 自动提取** — 相机、镜头、光圈、快门、ISO、焦段
-- **相册支持** — 子文件夹自动变成相册标签
-- **瀑布流布局** — 自适应响应式，手机电脑都能看
-- **灯箱模式** — 全屏浏览，EXIF 侧边栏，键盘/触摸翻页
-- **暗色/亮色主题** — 默认暗色，一键切换
-- **懒加载** — 滚动到才加载，不浪费流量
-- **GitHub Pages 免费托管** — 自动部署，不需要服务器
+---
 
-## 🚀 快速开始
+## 🚀 如何更新照片
 
-### 1. Fork 或 Clone 本仓库
+### 方法一：GitHub 网页上传（推荐）
 
-### 2. 开启 GitHub Pages
-- 进入仓库 **Settings → Pages**
-- Source 选择 **GitHub Actions**
+1. 打开仓库 https://github.com/Jiaze3303/Jiaze3303.github.io
+2. 进入 `images/` 文件夹，选择或创建子文件夹（如 `2025/`、`2024/`）
+3. 点击 **Add file → Upload files**
+4. 拖入照片，点 **Commit changes**
+5. 等待 1-2 分钟，GitHub Actions 自动构建部署
+6. 刷新网站即可看到新照片
 
-### 3. 添加照片
-把图片丢进 `images/` 文件夹：
+### 方法二：命令行操作
+
+```bash
+# 克隆仓库
+git clone https://github.com/Jiaze3303/Jiaze3303.github.io.git
+cd Jiaze3303.github.io
+
+# 放入照片（复制到 images/ 对应文件夹）
+cp ~/Photos/新照片.jpg images/2025/
+
+# 提交推送
+git add .
+git commit -m "添加新照片"
+git push
+
+# 自动构建部署，1-2分钟后刷新网站
+```
+
+---
+
+## 📁 文件夹结构
 
 ```
 images/
-├── 2024/
-│   ├── 夕阳.jpg
-│   └── 人像.jpg
+├── 2024/              ← 子文件夹 = 相册分类
+│   ├── 照片A.jpg
+│   └── 照片B.jpg
 ├── 2025/
-│   ├── 街拍.jpg
-│   └── 风景.jpg
-└── 随手拍.jpg          ← 根目录 = 无相册分类
+│   ├── 照片C.jpg
+│   └── 照片D.jpg
+└── 随手拍.jpg          ← 根目录 = 无分类
 ```
 
-### 4. 推送
-```bash
-git add .
-git commit -m "添加照片"
-git push
-```
+**规则：**
+- `images/` 下的子文件夹名 = 相册名（显示在顶部导航）
+- 支持格式：`.jpg` `.jpeg` `.png` `.webp` `.gif` `.avif`
+- 图片会自动压缩，无需手动处理
+- 按文件名排序，建议用日期命名（如 `2025-01-01_街拍.jpg`）
 
-GitHub Actions 会自动构建并部署你的画廊。
+---
 
-## 📁 目录结构
+## 🎨 网站功能
 
-```
-photo-gallery/
-├── images/              ← 📷 照片放这里！
-│   ├── 2024/            ← 子文件夹 = 相册名
-│   │   └── photo.jpg
-│   └── 2025/
-│       └── photo.jpg
-├── build.py             ← 构建脚本（扫描图片、提取 EXIF）
-├── index.html           ← 页面模板
-├── style.css            ← 样式文件
-├── app.js               ← 前端逻辑（灯箱、懒加载、主题切换）
-├── favicon.svg          ← 网站图标
-└── .github/
-    └── workflows/
-        └── deploy.yml   ← 自动构建部署
-```
+- **徕卡风格** — 黑灰白配色 + 红色点缀
+- **瀑布流布局** — 自适应 4列/3列/2列/1列
+- **灯箱浏览** — 点击看大图，左右键/触摸翻页
+- **模糊背景** — 灯箱背景是当前图片的高斯模糊
+- **暗色/亮色** — 一键切换主题
+- **随机 Hero** — 每次刷新首页背景随机选一张照片
+- **相册筛选** — 顶部导航按文件夹分类筛选
+- **懒加载** — 滚动到才加载，节省流量
 
-## 🎨 自定义
+---
+
+## ⚙️ 自定义
 
 ### 改网站标题
-编辑 `index.html`，找到 `<h1 class="site-title">Gallery</h1>`，把 `Gallery` 改成你的标题。
+编辑 `index.html`，搜索 `JIAZE` 替换为你的名字。
 
-### 改主题色
-编辑 `style.css`，修改 `--accent: #d4a574`（默认暖金色），换成你喜欢的颜色。
+### 改主题色（红色）
+编辑 `style.css`，搜索 `#E52528` 替换为你喜欢的颜色。
 
-### 支持的图片格式
-`.jpg` `.jpeg` `.png` `.webp` `.gif` `.avif`
+### 改 Hero 引言
+编辑 `index.html`，搜索 `"用光影记录世界的每一个瞬间"` 修改。
 
-## 📝 工作原理
+---
 
-1. 你把照片 push 到 `images/` 文件夹
-2. GitHub Actions 触发 `build.py`
-3. `build.py` 扫描所有图片，提取 EXIF 元数据
-4. 生成静态 `index.html`，照片数据内嵌其中
-5. 部署到 GitHub Pages
+## 🔧 技术栈
 
-不需要服务器，不需要数据库，不需要 API 密钥。纯静态文件。
+- 纯静态 HTML/CSS/JS
+- Python 构建脚本（提取 EXIF）
+- GitHub Actions 自动部署
+- GitHub Pages 托管
 
 ## License
 
