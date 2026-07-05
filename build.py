@@ -143,9 +143,31 @@ def scan_images(base_dir: str) -> list:
 
             photos.append(photo)
 
-    # Sort by date descending (newest first)
+    # Sort by date descending, then shuffle for visual variety
     photos.sort(key=lambda p: p.get("timestamp", 0), reverse=True)
-    return photos
+
+    # Interleave portrait and landscape for better masonry flow
+    portrait = [p for p in photos if p.get('height', 0) > p.get('width', 0)]
+    landscape = [p for p in photos if p not in portrait]
+
+    import random
+    seed = sum(ord(c) for p in photos for c in p['filename'])
+    rng = random.Random(seed)
+    rng.shuffle(portrait)
+    rng.shuffle(landscape)
+
+    # Interleave: alternate between landscape and portrait
+    result = []
+    i, j = 0, 0
+    while i < len(landscape) or j < len(portrait):
+        if i < len(landscape):
+            result.append(landscape[i])
+            i += 1
+        if j < len(portrait):
+            result.append(portrait[j])
+            j += 1
+
+    return result
 
 
 def copy_template(base_dir: str, output_dir: str):
