@@ -685,14 +685,14 @@ body:hover .cursor-glow { opacity: 1; }
     background-size: cover;
     background-position: center;
     filter: blur(50px);
-    opacity: 0.55;
+    opacity: 0.35;
 }
 
 .lightbox-backdrop::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.75);
 }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
