@@ -127,25 +127,25 @@ body:hover .cursor-glow { opacity: 1; }
     inset: 0;
     background: var(--bg);
     z-index: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 1.2s ease;
+    opacity: 0;
+}
+
+.hero-bg.has-bg {
+    opacity: 1;
 }
 
 .hero-bg::before {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-        radial-gradient(ellipse 1px 1px at 20% 30%, rgba(255,255,255,0.03) 0%, transparent 100%),
-        radial-gradient(ellipse 1px 1px at 80% 70%, rgba(255,255,255,0.03) 0%, transparent 100%),
-        radial-gradient(ellipse 1px 1px at 50% 50%, rgba(229,37,40,0.04) 0%, transparent 100%);
-    animation: heroNoise 20s linear infinite;
-}
-
-@keyframes heroNoise {
-    0% { transform: translate(0, 0); }
-    25% { transform: translate(-2px, 1px); }
-    50% { transform: translate(1px, -2px); }
-    75% { transform: translate(-1px, 2px); }
-    100% { transform: translate(0, 0); }
+    background: var(--bg);
+    opacity: 0.78;
+    backdrop-filter: blur(40px) saturate(0.6);
+    -webkit-backdrop-filter: blur(40px) saturate(0.6);
 }
 
 .hero-bg::after {

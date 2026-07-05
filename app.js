@@ -12,6 +12,22 @@
     let currentAlbum = "all";
     let currentView = "masonry";
 
+    // ── Hero Background ──
+    function initHeroBg() {
+        const heroBg = document.getElementById("heroBg");
+        if (!heroBg || photos.length === 0) return;
+
+        // Pick a random photo
+        const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+            heroBg.style.backgroundImage = `url(${randomPhoto.src})`;
+            heroBg.classList.add("has-bg");
+        };
+        img.src = randomPhoto.src;
+    }
+
     // ── Theme ──
     function initTheme() {
         const saved = localStorage.getItem("theme");
@@ -365,6 +381,7 @@
     // ── Init ──
     function init() {
         initTheme();
+        initHeroBg();
         initCursorGlow();
         initHeader();
         initStats();
