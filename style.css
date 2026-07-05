@@ -672,29 +672,27 @@ body:hover .cursor-glow { opacity: 1; }
 .lightbox-backdrop {
     position: absolute;
     inset: 0;
-    background-color: var(--bg);
+    background-color: #000;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    animation: fadeIn 0.25s ease;
 }
 
 .lightbox-backdrop::before {
     content: '';
     position: absolute;
-    inset: 0;
+    inset: -20%;
     background: inherit;
     background-size: cover;
     background-position: center;
-    filter: blur(60px) saturate(0.5);
-    transform: scale(1.2);
+    filter: blur(40px);
+    opacity: 0.35;
 }
 
 .lightbox-backdrop::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.7);
 }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -711,8 +709,8 @@ body:hover .cursor-glow { opacity: 1; }
 }
 
 @keyframes lightboxIn {
-    from { opacity: 0; transform: scale(0.97); }
-    to { opacity: 1; transform: scale(1); }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .lightbox-image-wrap {
@@ -749,10 +747,9 @@ body:hover .cursor-glow { opacity: 1; }
     border-radius: var(--radius);
     box-shadow: var(--shadow-lg);
     opacity: 0;
-    transition: opacity 0.35s ease;
+    transition: opacity 0.15s ease;
+    will-change: opacity;
 }
-
-.lightbox-img.visible { opacity: 1; }
 
 .lightbox-caption {
     position: absolute;
