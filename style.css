@@ -685,7 +685,7 @@ body:hover .cursor-glow { opacity: 1; }
     background-size: cover;
     background-position: center;
     filter: blur(50px);
-    opacity: 0.35;
+    opacity: 0.15;
 }
 
 .lightbox-backdrop::after {
