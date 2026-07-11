@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIAZE — Photography</title>
+    <meta name="description" content="Jiaze Photography Portfolio">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Grain Overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-content">
+            <div class="hero-top-line">
+                <span class="hero-line-left"></span>
+                <span class="hero-year">EST. 2024</span>
+                <span class="hero-line-right"></span>
+            </div>
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>ON DISPLAY</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-j">JIAZE</span>
+            </h1>
+            <p class="hero-subtitle">P H O T O G R A P H Y</p>
+            <div class="hero-divider">
+                <span class="divider-dot"></span>
+            </div>
+            <div class="hero-quote">"用光影记录世界的每一个瞬间"</div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="statPhotos">0</span>
+                    <span class="stat-label">PHOTOS</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" id="statAlbums">0</span>
+                    <span class="stat-label">ALBUMS</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" id="statCameras">0</span>
+                    <span class="stat-label">CAMERAS</span>
+                </div>
+            </div>
+            <div class="hero-scroll" id="heroScroll">
+                <span>SCROLL</span>
+                <div class="scroll-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <div class="header-left">
+                <a href="#" class="site-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+                    <span class="logo-dot"></span>
+                    <span class="logo-text">JIAZE</span>
+                </a>
+            </div>
+            <nav class="header-center">
+                <div class="album-nav" id="albumNav"><button class="album-btn active" data-album="all">全部</button>
+        <button class="album-btn" data-album="2025">2025</button>
+        <button class="album-btn" data-album="2026">2026</button>
+</div>
+            </nav>
+            <div class="header-right">
+                <span class="photo-count-header" id="photoCountHeader">22 张</span>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallerySection">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="title-red-dot"></span>
+                全部作品
+            </h2>
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="masonry" aria-label="瀑布流">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="1" y="1" width="10" height="14" rx="1"/><rect x="13" y="1" width="10" height="8" rx="1"/><rect x="13" y="11" width="10" height="12" rx="1"/><rect x="1" y="17" width="10" height="6" rx="1"/>
+                    </svg>
+                </button>
+                <button class="view-btn" data-view="grid" aria-label="网格">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="1" y="1" width="10" height="10" rx="1"/><rect x="13" y="1" width="10" height="10" rx="1"/><rect x="1" y="13" width="10" height="10" rx="1"/><rect x="13" y="13" width="10" height="10" rx="1"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <main class="gallery" id="gallery">
+            
+        <div class="photo-card" data-index="0" data-aspect="landscape">
+            <img data-src="/images/2025/DSC02747-已增强-RD-2_compressed.jpg" alt="DSC02747-已增强-RD-2_compressed.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2025</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="1" data-aspect="landscape">
+            <img data-src="/images/2025/DSC01519-已增强-降噪_compressed.jpg" alt="DSC01519-已增强-降噪_compressed.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2025</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="2" data-aspect="landscape">
+            <img data-src="/images/2025/DSC00973-已增强-降噪_compressed.jpg" alt="DSC00973-已增强-降噪_compressed.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2025</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="3" data-aspect="landscape">
+            <img data-src="/images/2025/DSC02609-已增强-RD_compressed.jpg" alt="DSC02609-已增强-RD_compressed.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2025</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="4" data-aspect="landscape">
+            <img data-src="/images/2025/DSC02824-已增强-SR.jpg" alt="DSC02824-已增强-SR.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2025</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="5" data-aspect="landscape">
+            <img data-src="/images/2026/CJZ06982.jpg" alt="CJZ06982.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2026</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="6" data-aspect="landscape">
+            <img data-src="/images/2026/CJZ06470.jpg" alt="CJZ06470.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2026</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="7" data-aspect="landscape">
+            <img data-src="/images/2025/DSC01638-已增强-降噪.jpg" alt="DSC01638-已增强-降噪.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2025</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="8" data-aspect="landscape">
+            <img data-src="/images/2026/CJZ06634.JPG" alt="CJZ06634.JPG" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2026</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="9" data-aspect="landscape">
+            <img data-src="/images/2026/CJZ08786.jpg" alt="CJZ08786.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2026</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="10" data-aspect="landscape">
+            <img data-src="/images/2026/CJZ05903.jpg" alt="CJZ05903.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2026</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="11" data-aspect="landscape">
+            <img data-src="/images/2025/DSC00133-已增强-降噪-2_compressed.jpg" alt="DSC00133-已增强-降噪-2_compressed.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2025</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="12" data-aspect="landscape">
+            <img data-src="/images/2025/DSC00950-已增强-降噪_compressed.jpg" alt="DSC00950-已增强-降噪_compressed.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2025</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="13" data-aspect="landscape">
+            <img data-src="/images/2026/CJZ05889.jpg" alt="CJZ05889.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2026</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="14" data-aspect="landscape">
+            <img data-src="/images/2026/CJZ07359.JPG" alt="CJZ07359.JPG" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2026</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="15" data-aspect="landscape">
+            <img data-src="/images/2025/DSC00168-已增强-RD-降噪_compressed_compressed.jpg" alt="DSC00168-已增强-RD-降噪_compressed_compressed.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2025</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="16" data-aspect="landscape">
+            <img data-src="/images/2026/CJZ07087.JPG" alt="CJZ07087.JPG" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2026</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="17" data-aspect="landscape">
+            <img data-src="/images/2025/DSC02732-已增强-SR-3_compressed.jpg" alt="DSC02732-已增强-SR-3_compressed.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2025</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="18" data-aspect="landscape">
+            <img data-src="/images/2026/CJZ06982.JPG" alt="CJZ06982.JPG" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2026</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="19" data-aspect="landscape">
+            <img data-src="/images/2026/CJZ07214.JPG" alt="CJZ07214.JPG" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2026</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="20" data-aspect="landscape">
+            <img data-src="/images/2025/DSC03471-已增强-降噪.jpg" alt="DSC03471-已增强-降噪.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2025</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" data-index="21" data-aspect="landscape">
+            <img data-src="/images/2026/IMG_20251228_230146.jpg" alt="IMG_20251228_230146.jpg" loading="lazy" class="photo-img">
+            <div class="photo-overlay">
+                <div class="photo-top-bar">
+                    <span class="photo-album">2026</span>
+                </div>
+                <div class="photo-bottom-bar">
+                    <div class="photo-meta">
+                        <span class="photo-date">2026-07-11</span>
+                    </div>
+                    <div class="photo-exif"></div>
+                </div>
+            </div>
+        </div>
+        </main>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-backdrop"></div>
+        <div class="lightbox-container">
+            <div class="lightbox-image-wrap">
+                <div class="lightbox-loader">
+                    <div class="loader-ring"></div>
+                </div>
+                <img class="lightbox-img" id="lightboxImg" src="" alt="">
+                <div class="lightbox-caption" id="lightboxCaption"></div>
+            </div>
+            <!-- Lightbox Top Bar -->
+            <div class="lightbox-topbar">
+                <div class="lightbox-counter" id="lbCounter"></div>
+                <button class="lightbox-close" id="lightboxClose" aria-label="关闭">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Lightbox Nav -->
+            <button class="lightbox-nav lightbox-nav-prev" id="lbPrev" aria-label="上一张">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </button>
+            <button class="lightbox-nav lightbox-nav-next" id="lbNext" aria-label="下一张">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="回到顶部">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-dot"></span>
+                <span class="footer-logo">JIAZE</span>
+                <span class="footer-tagline">PHOTOGRAPHY</span>
+            </div>
+            <div class="footer-meta">
+                <span>构建于 2026-07-11 16:57</span>
+                <span class="footer-sep">·</span>
+                <span>STATIC GALLERY</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.__PHOTO_DATA__ = [{"src": "/images/2025/DSC02747-已增强-RD-2_compressed.jpg", "filename": "DSC02747-已增强-RD-2_compressed.jpg", "album": "2025", "date": "2026-07-11", "timestamp": 1783789047}, {"src": "/images/2025/DSC01519-已增强-降噪_compressed.jpg", "filename": "DSC01519-已增强-降噪_compressed.jpg", "album": "2025", "date": "2026-07-11", "timestamp": 1783789045}, {"src": "/images/2025/DSC00973-已增强-降噪_compressed.jpg", "filename": "DSC00973-已增强-降噪_compressed.jpg", "album": "2025", "date": "2026-07-11", "timestamp": 1783789042}, {"src": "/images/2025/DSC02609-已增强-RD_compressed.jpg", "filename": "DSC02609-已增强-RD_compressed.jpg", "album": "2025", "date": "2026-07-11", "timestamp": 1783789042}, {"src": "/images/2025/DSC02824-已增强-SR.jpg", "filename": "DSC02824-已增强-SR.jpg", "album": "2025", "date": "2026-07-11", "timestamp": 1783789042}, {"src": "/images/2026/CJZ06982.jpg", "filename": "CJZ06982.jpg", "album": "2026", "date": "2026-07-11", "timestamp": 1783789050}, {"src": "/images/2026/CJZ06470.jpg", "filename": "CJZ06470.jpg", "album": "2026", "date": "2026-07-11", "timestamp": 1783789049}, {"src": "/images/2025/DSC01638-已增强-降噪.jpg", "filename": "DSC01638-已增强-降噪.jpg", "album": "2025", "date": "2026-07-11", "timestamp": 1783789042}, {"src": "/images/2026/CJZ06634.JPG", "filename": "CJZ06634.JPG", "album": "2026", "date": "2026-07-11", "timestamp": 1783789047}, {"src": "/images/2026/CJZ08786.jpg", "filename": "CJZ08786.jpg", "album": "2026", "date": "2026-07-11", "timestamp": 1783789052}, {"src": "/images/2026/CJZ05903.jpg", "filename": "CJZ05903.jpg", "album": "2026", "date": "2026-07-11", "timestamp": 1783789050}, {"src": "/images/2025/DSC00133-已增强-降噪-2_compressed.jpg", "filename": "DSC00133-已增强-降噪-2_compressed.jpg", "album": "2025", "date": "2026-07-11", "timestamp": 1783789042}, {"src": "/images/2025/DSC00950-已增强-降噪_compressed.jpg", "filename": "DSC00950-已增强-降噪_compressed.jpg", "album": "2025", "date": "2026-07-11", "timestamp": 1783789042}, {"src": "/images/2026/CJZ05889.jpg", "filename": "CJZ05889.jpg", "album": "2026", "date": "2026-07-11", "timestamp": 1783789051}, {"src": "/images/2026/CJZ07359.JPG", "filename": "CJZ07359.JPG", "album": "2026", "date": "2026-07-11", "timestamp": 1783789051}, {"src": "/images/2025/DSC00168-已增强-RD-降噪_compressed_compressed.jpg", "filename": "DSC00168-已增强-RD-降噪_compressed_compressed.jpg", "album": "2025", "date": "2026-07-11", "timestamp": 1783789042}, {"src": "/images/2026/CJZ07087.JPG", "filename": "CJZ07087.JPG", "album": "2026", "date": "2026-07-11", "timestamp": 1783789048}, {"src": "/images/2025/DSC02732-已增强-SR-3_compressed.jpg", "filename": "DSC02732-已增强-SR-3_compressed.jpg", "album": "2025", "date": "2026-07-11", "timestamp": 1783789046}, {"src": "/images/2026/CJZ06982.JPG", "filename": "CJZ06982.JPG", "album": "2026", "date": "2026-07-11", "timestamp": 1783789049}, {"src": "/images/2026/CJZ07214.JPG", "filename": "CJZ07214.JPG", "album": "2026", "date": "2026-07-11", "timestamp": 1783789051}, {"src": "/images/2025/DSC03471-已增强-降噪.jpg", "filename": "DSC03471-已增强-降噪.jpg", "album": "2025", "date": "2026-07-11", "timestamp": 1783789042}, {"src": "/images/2026/IMG_20251228_230146.jpg", "filename": "IMG_20251228_230146.jpg", "album": "2026", "date": "2026-07-11", "timestamp": 1783789048}];
+    </script>
+    <script src="/app.js"></script>
+</body>
+</html>
